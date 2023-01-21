@@ -21,15 +21,16 @@
     <div class="container">
       <div class="myform">
         <h1 class="heading-1">sign up</h1>
-        <form class="form" id="form">
+        <form class="form" action="/register" method="POST" id="form">
           <div class="formgroup-main">
             <div class="formgroup">
               <label for="name"><i class="fa-solid fa-user"></i></label>
               <input
                 type="text"
                 id="name"
-                required
+                {{! required }}
                 placeholder="enter username"
+                name="firstname"
               />
 
               <span>
@@ -46,8 +47,9 @@
               <input
                 type="email"
                 id="email"
-                required
+                {{! required }}
                 placeholder="email address"
+                name="email"
               />
 
               <span>
@@ -59,14 +61,29 @@
           </div>
 
           <div class="formgroup-main">
+
+            <div class="formradio">
+              <label class="radio inline">
+                <input type="radio" name="gender" value="male" />
+                <span class="gen">Male</span>
+              </label>
+              <label class="radio inline">
+                <input type="radio" name="gender" value="female" />
+                <span class="gen">Female</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="formgroup-main">
             <div class="formgroup">
               <label for="number"><i class="fa-solid fa-phone"></i></label>
 
               <input
                 type="number"
                 id="number"
-                required
+                {{! required }}
                 placeholder="phone number"
+                name="phone"
               />
 
               <span>
@@ -86,8 +103,9 @@
               <input
                 type="password"
                 id="password"
-                required
+                {{! required }}
                 placeholder="password"
+                name="password"
               />
 
               <span>
@@ -107,8 +125,9 @@
               <input
                 type="password"
                 id="rpassword"
-                required
+                {{! required }}
                 placeholder="re-enter you password"
+                name="repassword"
               />
 
               <span>
@@ -126,6 +145,6 @@
         </form>
       </div>
     </div>
-    <script src="js/script.js"></script>
+    {{! <script src="js/script.js"></script> }}
   </body>
 </html>
