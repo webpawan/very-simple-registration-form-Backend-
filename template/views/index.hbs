@@ -1,14 +1,131 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    {{>navbar}}
-    hello pawan
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>form validation</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="myform">
+        <h1 class="heading-1">sign up</h1>
+        <form class="form" id="form">
+          <div class="formgroup-main">
+            <div class="formgroup">
+              <label for="name"><i class="fa-solid fa-user"></i></label>
+              <input
+                type="text"
+                id="name"
+                required
+                placeholder="enter username"
+              />
+
+              <span>
+                <i class="fa-solid fa-xmark icon"></i>
+                <i class="fa-solid fa-check icon"></i>
+              </span>
+            </div>
+            <small id="tagline"></small>
+          </div>
+
+          <div class="formgroup-main">
+            <div class="formgroup">
+              <label for="email"><i class="fa-solid fa-envelope"></i></label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="email address"
+              />
+
+              <span>
+                <i class="fa-solid fa-xmark icon"></i>
+                <i class="fa-solid fa-check icon"></i>
+              </span>
+            </div>
+            <small id="tagline"></small>
+          </div>
+
+          <div class="formgroup-main">
+            <div class="formgroup">
+              <label for="number"><i class="fa-solid fa-phone"></i></label>
+
+              <input
+                type="number"
+                id="number"
+                required
+                placeholder="phone number"
+              />
+
+              <span>
+                <i class="fa-solid fa-xmark icon"></i>
+                <i class="fa-solid fa-check icon"></i>
+              </span>
+            </div>
+            <small id="tagline"></small>
+          </div>
+
+          <div class="formgroup-main">
+            <div class="formgroup">
+              <label for="password"><i
+                  class="fa-sharp fa-solid fa-lock"
+                ></i></label>
+
+              <input
+                type="password"
+                id="password"
+                required
+                placeholder="password"
+              />
+
+              <span>
+                <i class="fa-solid fa-xmark icon"></i>
+                <i class="fa-solid fa-check icon"></i>
+              </span>
+            </div>
+            <small id="tagline"></small>
+          </div>
+
+          <div class="formgroup-main">
+            <div class="formgroup">
+              <label for="rpassword"><i
+                  class="fa-sharp fa-solid fa-lock"
+                ></i></label>
+
+              <input
+                type="password"
+                id="rpassword"
+                required
+                placeholder="re-enter you password"
+              />
+
+              <span>
+                <i class="fa-solid fa-xmark icon"></i>
+                <i class="fa-solid fa-check icon"></i>
+              </span>
+            </div>
+            <small id="tagline"></small>
+          </div>
+          <!-- 
+          <button type="submit" class="btn" id="btn" value="submit">
+            click here
+          </button> -->
+          <input type="submit" value="Submit" id="btn" class="btn" />
+        </form>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
 </html>
