@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const hbs = require("hbs");
+const bcrypt = require("bcryptjs")
 const Register = require("./modules/register");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,9 +31,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/register", (req, res) => {
+app.get("/regteisr", (req, res) => {
   res.render("register");
 });
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
 
 app.post("/register", async (req, res) => {
   try {
@@ -48,13 +54,52 @@ app.post("/register", async (req, res) => {
       repassword:req.body.repassword
     }) 
 
+// middleawar 
+
+
+
+
     const register = await userRegisterData.save();
-    res.status(200).send(register)
+    res.status(200).send("index")
 
   } catch (error) {
     res.status(404).send(error);
   }
 });
+
+app.post("/login", async (req,res)=>{
+  try {
+    
+const email = req.body.email
+const password = req.body.password
+
+const userEmail = await Register.findOne({email:email})
+
+const isMatch =await bcrypt.compare(password,userEmail.password)
+
+
+
+if(userEmail.password === password){
+  res.status(201).render("index")
+} if(!isMatch){
+  res.status(404).send("wrong")
+}
+
+
+// key and value same ha to niche bala bhi likh sakte ha ------------- 
+// Register.findOne({email})
+// --------------------------------------------------------------------------
+// fir bala email detabase ka email ha last bala email yaha ka email ha 
+  } catch (error) {
+    res.status(404).send("envalid login details")
+  }
+})
+
+
+// Hashing vs Encryption – Hashing refers to permanent data conversion into message digest while encryption works in two ways, which can encode and decode the data. Hashing helps protect the integrity of the information and Encryption is used to secure the data from the reach of third parties
+
+
+
 
 app.listen(port, () => {
   console.log("server start");
