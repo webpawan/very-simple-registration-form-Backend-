@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const path = require("path");
 const hbs = require("hbs");
@@ -5,6 +6,10 @@ const bcrypt = require("bcryptjs")
 const Register = require("./modules/register");
 const app = express();
 const port = process.env.PORT || 3000;
+
+
+// https://supertokens.com/blog/what-is-jwt
+// all about jwt (json tokken)----------------------------------------------------------
 
 require("./db/conection");
 
@@ -26,6 +31,8 @@ app.set("views", TemplatePath);
 // -------------------
 
 app.use(express.urlencoded({extended:false}))
+
+
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -56,11 +63,12 @@ app.post("/register", async (req, res) => {
 
 // middleawar 
 
+// jwt -------
+const token = await userRegisterData.genrateAuthToken();
 
-
-
+// --------------------
     const register = await userRegisterData.save();
-    res.status(200).send("index")
+    res.status(200).send("complete done !")
 
   } catch (error) {
     res.status(404).send(error);
@@ -77,12 +85,17 @@ const userEmail = await Register.findOne({email:email})
 
 const isMatch =await bcrypt.compare(password,userEmail.password)
 
+const token = await userEmail.genrateAuthToken();
 
 
-if(userEmail.password === password){
-  res.status(201).render("index")
-} if(!isMatch){
-  res.status(404).send("wrong")
+// if(userEmail.password === password){
+//   res.status(201).render("index")
+// }
+ if(isMatch){
+  res.status(200).send("login complete")
+}else{
+  res.status(404).send("wrong password")
+  
 }
 
 
@@ -92,6 +105,7 @@ if(userEmail.password === password){
 // fir bala email detabase ka email ha last bala email yaha ka email ha 
   } catch (error) {
     res.status(404).send("envalid login details")
+    console.log(error);
   }
 })
 
