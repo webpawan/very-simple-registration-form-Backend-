@@ -1,4 +1,6 @@
 const form = document.getElementById('form');
+
+console.log(form);
 const username = document.getElementById('name');
 const email = document.getElementById('email');
 const number = document.getElementById('number');
